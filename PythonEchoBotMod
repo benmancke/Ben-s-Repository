@@ -32,7 +32,7 @@ class BotRequestHandler(http.server.BaseHTTPRequestHandler):
     def __handle_message_activity(self, activity: Activity):
         self.send_response(200)
         self.end_headers()
-        if “question” in activity.text.lower:
+        if “question” in activity.text.lower():
             self._adapter.send([BotRequestHandler.__create_reply_activity(activity, 'I can help you with any questions.”)])  
         else:
             self._adapter.send([BotRequestHandler.__create_reply_activity(activity, 'You said: %s' % activity.text)])
